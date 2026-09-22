@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfólio Igor Oliverira</title>
+</head>
+
+<body>
+
+    <div class="particulas">
+
+    </div>
+
+    <nav class="navegacao">
+        <ul class="menu">
+            <li>
+                <a href="#inicio" class="menu-link">Início</a>
+            </li>
+            <li>
+                <a href="#sobre" class="menu-link">Sobre</a>
+            </li>
+            <li>
+                <a href="#projetos" class="menu-link">Projetos</a>
+            </li>
+            <li>
+                <a href="#contato" class="menu-link">Contato</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main id="inicio" class="cabecalho">
+        <img src="img/foto.png" alt="Foto de Igor Oliverira" class="foto-perfil">
+        <h1>Igor Oliverira</h1>
+        <p class="cabecalho-sub-titulo">Desenvolvedor Full Stack</p>
+    </main>
+
+    <section id="sobre" class="sobre">
+        <h2 class="sobre-titulo">Sobre Mim</h2>
+        <div class="sobre-caixa">
+            <p class="sobre-paragrafo">Olá! Meu nome é Igor Borba de Oliveira, tenho 22 anos esou um desenvolvedor Full
+                Stack construindo minha carreira na área de tecnologia, Atualmente estou desenvolvendo projetos para
+                colocar em prática meus conhecimentos em Java, JavaScript, HTML, CSS, SQL e integração de APIs. Este
+                portifólio reúne um pouco do que aprendi até agora e também alguns projetos que desenvolvi. Sinta-se à
+                vontade para explorar e conhecer mais sobre meu trabalho!
+            </p>
+        </div>
+    </section>
+
+    <section id="projetos" class="projetos">
+        <h2 class="projeto-titulo">Meus Projetos</h2>
+        <div class="projetos-caixa">
+
+            <div class="projetos-card">
+                <img src="img/projeto1.png" alt="Projeto 1" class="projeto-imagem">
+                <div class="textos-projeto">
+                    <h3 class="projetos-titulos">Agência de Marketing</h3>
+                    <p class="projetos-descricao">Projeto de desenvolvimento de site interativo para agência de
+                        marketing.
+                    </p>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="img/projeto2.png" alt="Projeto 2" class="projeto-imagem">
+                <div class="textos-projeto">
+                    <h3 class="projetos-titulos">Sistema de Gerenciamento de Tarefas</h3>
+                    <p class="projetos-descricao">Projeto de desenvolvimento de sistema de gerenciamento de
+                        tarefaspessoais.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contato" class="contatos">
+        <h2 class="contatos-titulo">Entre em Contato</h2>
+        <form class="formulario-contato" id="formulario" onsubmit="enviarWhats(event)">
+
+            <div class="grupo-form">
+                <input placeholder="Nome" class="campo-form" id="nome">
+            </div>
+
+            <div class="grupo-form">
+                <textarea class="campo-form" placeholder="Digite sua mensagem" rows="5" id="mensagem"></textarea>
+            </div>
+
+            <button type="submit" class="botao-form">Enviar WhatsApp</button>
+        </form>
+    </section>
+
+    <script src="config.local.js"></script>
+    <script>
+        function enviarWhats(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome');
+            const mensagem = document.getElementById('mensagem');
+            const telefone = window.SITE_CONFIG?.telefone || '';
+
+            const texto = `Olá! Me chamo ${nome.value}, ${mensagem.value}`;
+            const msgFormatada = encodeURIComponent(texto);
+            const link = `https://wa.me/${telefone}?text=${msgFormatada}`;
+
+            window.open(link, '_blank');
+        }
+    </script>
+
+</body>
+
+</html>
