@@ -122,6 +122,15 @@ h1{
     font-size: 1.25rem;
 }
 
+.github-link{
+    color: #1556cf;
+    text-decoration: none;
+}
+
+.github-link:hover{
+    color: var(--claro);
+}
+
 .projetos{
     padding: 6rem 2rem;
 }
