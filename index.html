@@ -75,7 +75,7 @@
         </div>
     </section>
 
-    <section id="sobre" class="sobre">
+    <section class="sobre">
         <div class="sobre-caixa">
             <p class="sobre-paragrafo">
                 Para mais informações sobre meus projetos, visite meu perfil no GitHub: <a href="https://github.com/Igorboliveira" target="_blank" class="github-link">https://github.com/Igorboliveira</a>
@@ -89,11 +89,11 @@
         <form class="formulario-contato" id="formulario" onsubmit="enviarWhats(event)">
 
             <div class="grupo-form">
-                <input placeholder="Nome" class="campo-form" id="nome">
+                <input type="text" placeholder="Nome" class="campo-form" id="nome" name="nome" required>
             </div>
 
             <div class="grupo-form">
-                <textarea class="campo-form" placeholder="Digite sua mensagem" rows="5" id="mensagem"></textarea>
+                <textarea class="campo-form" placeholder="Digite sua mensagem" rows="5" id="mensagem" name="mensagem" required></textarea>
             </div>
 
             <button type="submit" class="botao-form">Enviar WhatsApp</button>
@@ -102,18 +102,21 @@
         </form>
     </section>
 
-    <script src="config.local.js"></script>
     <script>
         function enviarWhats(event) {
             event.preventDefault();
 
-            const nome = document.getElementById('nome');
-            const mensagem = document.getElementById('mensagem');
-            const telefone = window.SITE_CONFIG?.telefone || '';
+            const nome = document.getElementById('nome').value.trim();
+            const mensagem = document.getElementById('mensagem').value.trim();
 
-            const texto = `Olá! Me chamo ${nome.value}, ${mensagem.value}`;
+            if (!nome || !mensagem) {
+                alert('Preencha seu nome e sua mensagem antes de enviar.');
+                return;
+            }
+
+            const texto = `Olá! Me chamo ${nome}. ${mensagem}`;
             const msgFormatada = encodeURIComponent(texto);
-            const link = `https://wa.me/${telefone}?text=${msgFormatada}`;
+            const link = `https://wa.me/5551996971496?text=${msgFormatada}`;
 
             window.open(link, '_blank');
         }
